@@ -7,15 +7,18 @@ import org.junit.jupiter.api.Test;
 import a7.*;
 
 public class A7AdeptTests {
+	
+	Driver d1 = makeDriver(0, 1);
+	Driver d2 = makeDriver(0, 2);
+	Driver d3 = makeDriver(0, 3);
+	Driver d4 = makeDriver(0, 4);
+	Driver d5 = makeDriver(0, 5);
+	
+	Position client_position = new PositionImpl(0,0);
 
 	@Test
 	public void simpleTest() {
-		Driver d1 = makeDriver(0, 1);
-		Driver d2 = makeDriver(0, 2);
-		Driver d3 = makeDriver(0, 3);
-		Driver d4 = makeDriver(0, 4);
-		Driver d5 = makeDriver(0, 5);
-		
+
 		List<Driver> pool = new ArrayList<Driver>();
 		
 		pool.add(d1);
@@ -23,8 +26,6 @@ public class A7AdeptTests {
 		pool.add(d3);
 		pool.add(d4);
 		pool.add(d5);
-		
-		Position client_position = new PositionImpl(0,0);
 		
 		Iterator<Driver> iter = new ExpandingProximityIterator(pool, client_position, 2);
 		
@@ -52,18 +53,15 @@ public class A7AdeptTests {
 
 	@Test
 	public void onlyOneDriverTest() {
-		Driver d1 = makeDriver(0, 2);
 		
 		List<Driver> pool = new ArrayList<Driver>();
 		
-		pool.add(d1);
-		
-		Position client_position = new PositionImpl(0,0);
+		pool.add(d2);
 		
 		Iterator<Driver> iter = new ExpandingProximityIterator(pool, client_position, 3);
 		
 		assertTrue(iter.hasNext());
-		assertEquals(d1, iter.next());
+		assertEquals(d2, iter.next());
 		assertFalse(iter.hasNext());
 		try {
 			Driver d = iter.next();
@@ -91,8 +89,6 @@ public class A7AdeptTests {
 		pool.add(d3);
 		pool.add(d4);
 		pool.add(d5);
-		
-		Position client_position = new PositionImpl(0,0);
 		
 		Iterator<Driver> iter1 = new ExpandingProximityIterator(pool, client_position, 2);
 		Iterator<Driver> iter2 = new ExpandingProximityIterator(pool, client_position, 3);
@@ -163,23 +159,16 @@ public class A7AdeptTests {
 
 	@Test
 	public void reallyFarAwayTest() {
-		Driver d1 = makeDriver(0, 1);
-		Driver d2 = makeDriver(0, 2);
-		Driver d3 = makeDriver(0, 3);
-		Driver d4 = makeDriver(0, 4);
-		Driver d5 = makeDriver(0, 5);
+
 		Driver d50 = makeDriver(0, 50);
 		
 		List<Driver> pool = new ArrayList<Driver>();
-		
 		pool.add(d1);
 		pool.add(d2);
 		pool.add(d3);
 		pool.add(d4);
 		pool.add(d5);
 		pool.add(d50);
-		
-		Position client_position = new PositionImpl(0,0);
 		
 		Iterator<Driver> iter = new ExpandingProximityIterator(pool, client_position, 2);
 		
@@ -198,8 +187,8 @@ public class A7AdeptTests {
 		assertFalse(iter.hasNext());
 	}
 	
-	private Driver makeDriver(int i, int j) {
-		Vehicle v = new VehicleImpl("make", "model", "plate", new PositionImpl(i,j));
+	private Driver makeDriver(int x, int y) {
+		Vehicle v = new VehicleImpl("make", "model", "plate", new PositionImpl(x, y));
 		return new DriverImpl("first", "last", 0, v);
 	}	
 	

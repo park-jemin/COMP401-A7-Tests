@@ -7,6 +7,26 @@ import org.junit.jupiter.api.Test;
 import a7.*;
 
 public class A7JediTests {
+	
+	Driver d1 = makeDriver(0, 1);
+	Driver d1a = makeDriver(0, 1);
+	Driver d1b = makeDriver(0, 1);
+	Driver d1c = makeDriver(0, 1);
+	
+	Driver d2 = makeDriver(0, 2);
+	Driver d2a = makeDriver(0, 2);
+	Driver d2b = makeDriver(0, 2);
+	
+	Driver d3 = makeDriver(0, 3);
+	Driver d3a = makeDriver(0, 3);
+	Driver d3b = makeDriver(0, 3);
+	Driver d3c = makeDriver(0, 3);
+	Driver d3d = makeDriver(0, 3);
+	Driver d3e = makeDriver(0, 3);
+	
+	Driver d4 = makeDriver(0, 4);
+	Driver d4a = makeDriver(0, 4);
+	Driver d4b = makeDriver(0, 4);
 
 	@Test
 	public void simpleJediTest() {
@@ -14,22 +34,6 @@ public class A7JediTests {
 		List<Driver> pool2 = new ArrayList<Driver>();
 		List<Driver> pool3 = new ArrayList<Driver>();
 		List<Driver> pool4 = new ArrayList<Driver>();
-
-		Driver d1 = makeDriver(0, 1);
-		Driver d1a = makeDriver(0, 1);
-		Driver d1b = makeDriver(0, 1);
-		
-		Driver d2 = makeDriver(0, 2);
-		Driver d2a = makeDriver(0, 2);
-		Driver d2b = makeDriver(0, 2);
-		
-		Driver d3 = makeDriver(0, 3);
-		Driver d3a = makeDriver(0, 3);
-		Driver d3b = makeDriver(0, 3);
-		
-		Driver d4 = makeDriver(0, 4);
-		Driver d4a = makeDriver(0, 4);
-		Driver d4b = makeDriver(0, 4);
 		
 		pool1.addAll(List.of(d1, d1a, d1b));
 		pool2.addAll(List.of(d2, d2a, d2b));
@@ -88,25 +92,6 @@ public class A7JediTests {
 		List<Driver> pool2 = new ArrayList<Driver>();
 		List<Driver> pool3 = new ArrayList<Driver>();
 		List<Driver> pool4 = new ArrayList<Driver>();
-
-		Driver d1 = makeDriver(0, 1);
-		Driver d1a = makeDriver(0, 1);
-		Driver d1b = makeDriver(0, 1);
-		Driver d1c = makeDriver(0, 1);
-		
-		Driver d2 = makeDriver(0, 2);
-		Driver d2a = makeDriver(0, 2);
-		
-		Driver d3 = makeDriver(0, 3);
-		Driver d3a = makeDriver(0, 3);
-		Driver d3b = makeDriver(0, 3);
-		Driver d3c = makeDriver(0, 3);
-		Driver d3d = makeDriver(0, 3);
-		Driver d3e = makeDriver(0, 3);
-		
-		Driver d4 = makeDriver(0, 4);
-		Driver d4a = makeDriver(0, 4);
-		Driver d4b = makeDriver(0, 4);
 		
 		pool1.addAll(List.of(d1, d1a, d1b, d1c));
 		pool2.addAll(List.of(d2, d2a));
@@ -162,10 +147,6 @@ public class A7JediTests {
 	@Test
 	public void onlyOnePoolTest() {
 		List<Driver> pool1 = new ArrayList<Driver>();
-
-		Driver d1 = makeDriver(0, 1);
-		Driver d1a = makeDriver(0, 1);
-		Driver d1b = makeDriver(0, 1);
 		
 		pool1.addAll(List.of(d1, d1a, d1b));
 		
@@ -182,7 +163,6 @@ public class A7JediTests {
 		assertEquals(d1b, iter.next());
 		assertFalse(iter.hasNext());
 	}
-
 	
 	@Test
 	public void onePoolStartsEmpty() {
@@ -190,18 +170,6 @@ public class A7JediTests {
 		List<Driver> pool2 = new ArrayList<Driver>();
 		List<Driver> pool3 = new ArrayList<Driver>();
 		List<Driver> pool4 = new ArrayList<Driver>();
-
-		Driver d1 = makeDriver(0, 1);
-		Driver d1a = makeDriver(0, 1);
-		Driver d1b = makeDriver(0, 1);
-		
-		Driver d3 = makeDriver(0, 3);
-		Driver d3a = makeDriver(0, 3);
-		Driver d3b = makeDriver(0, 3);
-		
-		Driver d4 = makeDriver(0, 4);
-		Driver d4a = makeDriver(0, 4);
-		Driver d4b = makeDriver(0, 4);
 		
 		pool1.addAll(List.of(d1, d1a, d1b));
 		pool3.addAll(List.of(d3, d3a, d3b));
@@ -240,23 +208,11 @@ public class A7JediTests {
 	}
 
 	@Test
-	public void startPoolStartsEmpty() {
+	public void firstPoolStartsEmpty() {
 		List<Driver> pool1 = new ArrayList<Driver>();
 		List<Driver> pool2 = new ArrayList<Driver>();
 		List<Driver> pool3 = new ArrayList<Driver>();
 		List<Driver> pool4 = new ArrayList<Driver>();
-		
-		Driver d2 = makeDriver(0, 2);
-		Driver d2a = makeDriver(0, 2);
-		Driver d2b = makeDriver(0, 2);
-		
-		Driver d3 = makeDriver(0, 3);
-		Driver d3a = makeDriver(0, 3);
-		Driver d3b = makeDriver(0, 3);
-		
-		Driver d4 = makeDriver(0, 4);
-		Driver d4a = makeDriver(0, 4);
-		Driver d4b = makeDriver(0, 4);
 		
 		pool2.addAll(List.of(d2, d2a, d2b));
 		pool3.addAll(List.of(d3, d3a, d3b));
@@ -295,23 +251,11 @@ public class A7JediTests {
 	}
 	
 	@Test
-	public void endPoolStartsEmpty() {
+	public void lastPoolStartsEmpty() {
 		List<Driver> pool1 = new ArrayList<Driver>();
 		List<Driver> pool2 = new ArrayList<Driver>();
 		List<Driver> pool3 = new ArrayList<Driver>();
 		List<Driver> pool4 = new ArrayList<Driver>();
-		
-		Driver d2 = makeDriver(0, 2);
-		Driver d2a = makeDriver(0, 2);
-		Driver d2b = makeDriver(0, 2);
-		
-		Driver d3 = makeDriver(0, 3);
-		Driver d3a = makeDriver(0, 3);
-		Driver d3b = makeDriver(0, 3);
-		
-		Driver d4 = makeDriver(0, 4);
-		Driver d4a = makeDriver(0, 4);
-		Driver d4b = makeDriver(0, 4);
 		
 		pool2.addAll(List.of(d2, d2a, d2b));
 		pool3.addAll(List.of(d3, d3a, d3b));
@@ -374,8 +318,8 @@ public class A7JediTests {
 		}
 	}
 	
-	private Driver makeDriver(int i, int j) {
-		Vehicle v = new VehicleImpl("make", "model", "plate", new PositionImpl(i,j));
+	private Driver makeDriver(int x, int y) {
+		Vehicle v = new VehicleImpl("make", "model", "plate", new PositionImpl(x, y));
 		return new DriverImpl("first", "last", 0, v);
 	}	
 	
