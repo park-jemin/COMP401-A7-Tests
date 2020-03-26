@@ -60,7 +60,7 @@ public class A7AdeptTests {
 		
 		Position client_position = new PositionImpl(0,0);
 		
-		Iterator<Driver> iter = new ProximityIterator(pool, client_position, 3);
+		Iterator<Driver> iter = new ExpandingProximityIterator(pool, client_position, 3);
 		
 		assertTrue(iter.hasNext());
 		assertEquals(d1, iter.next());
