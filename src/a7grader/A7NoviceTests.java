@@ -263,7 +263,6 @@ public class A7NoviceTests {
 
 		}
 		
-		
 		KMPCollection kmp_collection = new KMPCollection();
 		Iterator<Driver> proximity_iterator = 
 				new ProximityIterator(kmp_collection, new PositionImpl(0,0), 6);

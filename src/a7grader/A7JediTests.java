@@ -318,6 +318,67 @@ public class A7JediTests {
 		}
 	}
 	
+	@Test
+	public void complexJediTest() { // combines uneven and empty pools
+		List<Driver> pool1 = new ArrayList<Driver>();
+		List<Driver> pool2 = new ArrayList<Driver>();
+		List<Driver> pool3 = new ArrayList<Driver>();
+		List<Driver> pool4 = new ArrayList<Driver>();
+		List<Driver> pool5 = new ArrayList<Driver>();
+		List<Driver> pool6 = new ArrayList<Driver>();
+		
+		pool1.addAll(List.of(d1, d1a, d1b, d1c));
+		pool2.addAll(List.of(d2, d2a, d2b));
+		pool3.addAll(List.of(d3, d3a, d3b, d3c, d3d, d3e));
+		pool4.addAll(List.of(d4));
+		
+		List<Iterable<Driver>> pools = new ArrayList<>();
+		pools.add(pool1);
+		pools.add(pool5);
+		pools.add(pool2);
+		pools.add(pool3);
+		pools.add(pool4);
+		pools.add(pool6);
+		
+		Iterator<Driver> iter = new SnakeOrderAcrossPoolsIterator(pools);
+		
+		assertTrue(iter.hasNext());
+		assertEquals(d1, iter.next());
+		assertTrue(iter.hasNext());
+		assertEquals(d2, iter.next());
+		assertTrue(iter.hasNext());
+		assertEquals(d3, iter.next());
+		assertTrue(iter.hasNext());
+		assertEquals(d4, iter.next());
+		
+		assertTrue(iter.hasNext());
+		assertEquals(d3a, iter.next());
+		assertTrue(iter.hasNext());
+		assertEquals(d2a, iter.next());
+		assertTrue(iter.hasNext());
+		assertEquals(d1a, iter.next());
+		
+		assertTrue(iter.hasNext());
+		assertEquals(d1b, iter.next());
+		assertTrue(iter.hasNext());
+		assertEquals(d2b, iter.next());
+		assertTrue(iter.hasNext());
+		assertEquals(d3b, iter.next());
+		
+		assertTrue(iter.hasNext());
+		assertEquals(d3c, iter.next());
+		assertTrue(iter.hasNext());
+		assertEquals(d1c, iter.next());
+		
+		assertTrue(iter.hasNext());
+		assertEquals(d3d, iter.next());
+		assertTrue(iter.hasNext());
+		assertEquals(d3e, iter.next());
+		
+		assertFalse(iter.hasNext());
+	}
+	
+	
 	private Driver makeDriver(int x, int y) {
 		Vehicle v = new VehicleImpl("make", "model", "plate", new PositionImpl(x, y));
 		return new DriverImpl("first", "last", 0, v);
